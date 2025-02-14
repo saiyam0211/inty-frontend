@@ -32,7 +32,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <div className="w-full flex flex-col items-center py-10 bg-gray-100">
-      <h3 className="text-green-700 text-lg font-semibold">Our Testimonials</h3>
+      <h3 className="text-[#006452] text-lg font-semibold">Our Testimonials</h3>
       <h2 className="text-3xl font-bold text-center mb-6">What our clients say</h2>
       <div className="w-full max-w-3xl">
         <Swiper
