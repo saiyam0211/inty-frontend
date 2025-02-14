@@ -14,7 +14,7 @@ const Hero = () => {
       <p className="mt-4 text-sm sm:text-2xl md:text-2xl">
         We help you find and compare the best interior companies, designers, and carpenters.
       </p>
-      <button className="mt-6 px-6 py-3 bg-[#006452] text-white sm:py-5 text-2xl rounded-lg shadow-md md:text-2xl md:py-5 hover:bg-green-700 transition duration-300">
+      <button className="mt-6 px-6 py-3 bg-[#006452] text-white sm:py-5 text-2xl rounded-lg shadow-md md:text-2xl md:py-5 hover:bg-[#006452] transition duration-300">
         Explore Services
       </button>
     </div>

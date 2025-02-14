@@ -22,7 +22,7 @@ const Navbar = () => {
       {/* Book Now Button */}
       <a
         href="#"
-        className="hidden md:block w-[160px] h-[40px] text-white bg-[#006452] rounded-md text-center leading-[40px] hover:bg-green-800 transition"
+        className="hidden md:block w-[160px] h-[40px] text-white bg-[#006452] rounded-md text-center leading-[40px] hover:bg-[#006452] transition"
       >
         Book Now
       </a>
@@ -49,7 +49,7 @@ const Navbar = () => {
         <a href="#" className="hover:text-[#006452]" onClick={() => setIsOpen(false)}>Contact</a>
         <a
           href="#"
-          className="w-[160px] h-[40px] text-white bg-[#006452] rounded-md text-center leading-[40px] hover:bg-green-800 transition"
+          className="w-[160px] h-[40px] text-white bg-[#006452] rounded-md text-center leading-[40px] hover:bg-[#006452] transition"
           onClick={() => setIsOpen(false)}
         >
           Book Now

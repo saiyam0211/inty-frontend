@@ -62,10 +62,10 @@ export default function Testimonials() {
           ))}
         </Swiper>
         <div className="flex justify-center gap-4 mt-4">
-          <button className="swiper-button-prev p-2 bg-green-600 text-white rounded-full">
+          <button className="swiper-button-prev p-2 bg-[#006452] text-white rounded-full">
             <ChevronLeft size={20} />
           </button>
-          <button className="swiper-button-next p-2 bg-green-600 text-white rounded-full">
+          <button className="swiper-button-next p-2 bg-[#006452] text-white rounded-full">
             <ChevronRight size={20} />
           </button>
         </div>
