@@ -4,11 +4,13 @@ import Services from '../../components/Services/Services'
 import Testimonials from '../../components/Testimonials/Testimonials'
 import OurPartners from '../../components/OurPartners/OurPartners'
 import Designers from '../../components/Designers/Designers'
+import Navbar from '../../components/Navbar/Navbar'
 
 const Home = () => {
   return (
     <div>
-        <Services/>
+      <Navbar/>
+      <Services/>
       <Hero/>
       <Designers/>
       <OurPartners/>

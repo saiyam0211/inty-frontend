@@ -2,7 +2,7 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen flex items-center justify-between bg-cover bg-center px-10"
+    <section className="relative w-full h-screen flex items-center justify-between bg-cover bg-center  mb-12 px-10"
       style={{ backgroundImage: "url('./images/hero-bg.png" }}>
       <div className="max-w-lg ml-[90px] text-white">
         <h1 className="text-6xl font-bold">Welcome to Inty</h1>
