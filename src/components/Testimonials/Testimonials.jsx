@@ -37,15 +37,16 @@ export default function TestimonialSlider() {
 
     <section className="py-12 px-6 md:px-12 lg:px-24 text-center  mb-12">
        <h3 className="text-[#006452] text-lg font-semibold">Our Testimonial</h3>
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">What our Clients says</h2>
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2 z-10" >What our Clients says</h2>
 
 
 
-      <div className="flex flex-col items-center p-6 max-w-lg mx-auto mt-15 bg-white shadow-lg rounded-lg relative">
+      <div className="flex flex-col items-center p-6 max-w-lg mx-auto mt-15 bg-white shadow-lg rounded-lg relative " >
 
       
 <div className="flex items-center space-x-4">
-  <img src={testimonials[currentIndex].image} alt={testimonials[currentIndex].name} className="w-20 h-20 rounded-full" />
+  <img src="./images/testimonial-design.png" className="absolute transform translate-y-[-100%]   lg:translate-y-[-100%] left-5 h-25 opacity-90" alt="" />
+  <img src={testimonials[currentIndex].image} alt={testimonials[currentIndex].name} className="w-20 h-20 z-50 rounded-full" />
   <div>
     <h3 className="text-lg font-semibold">{testimonials[currentIndex].name}</h3>
     <p className="text-gray-500">{testimonials[currentIndex].role}</p>
