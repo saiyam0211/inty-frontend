@@ -13,10 +13,10 @@ const Navbar = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex gap-10 text-lg font-medium">
-        <li className="cursor-pointer hover:text-green-700">Home</li>
-        <li className="cursor-pointer hover:text-green-700">About</li>
-        <li className="cursor-pointer hover:text-green-700">Service</li>
-        <li className="cursor-pointer hover:text-green-700">Contact</li>
+        <li className="cursor-pointer hover:text-[#006452]">Home</li>
+        <li className="cursor-pointer hover:text-[#006452]">About</li>
+        <li className="cursor-pointer hover:text-[#006452]">Service</li>
+        <li className="cursor-pointer hover:text-[#006452]">Contact</li>
       </ul>
 
       {/* Book Now Button */}
@@ -43,10 +43,10 @@ const Navbar = () => {
         } md:hidden`}
       >
         <X size={30} onClick={() => setIsOpen(false)} className="absolute top-5 right-5 cursor-pointer" />
-        <a href="#" className="hover:text-green-700" onClick={() => setIsOpen(false)}>Home</a>
-        <a href="#" className="hover:text-green-700" onClick={() => setIsOpen(false)}>About</a>
-        <a href="#" className="hover:text-green-700" onClick={() => setIsOpen(false)}>Service</a>
-        <a href="#" className="hover:text-green-700" onClick={() => setIsOpen(false)}>Contact</a>
+        <a href="#" className="hover:text-[#006452]" onClick={() => setIsOpen(false)}>Home</a>
+        <a href="#" className="hover:text-[#006452]" onClick={() => setIsOpen(false)}>About</a>
+        <a href="#" className="hover:text-[#006452]" onClick={() => setIsOpen(false)}>Service</a>
+        <a href="#" className="hover:text-[#006452]" onClick={() => setIsOpen(false)}>Contact</a>
         <a
           href="#"
           className="w-[160px] h-[40px] text-white bg-[#006452] rounded-md text-center leading-[40px] hover:bg-green-800 transition"
