@@ -41,7 +41,7 @@ export default function TestimonialSlider() {
 
 
 
-      <div className="flex flex-col items-center p-6 max-w-lg mx-auto mt-15 bg-white shadow-lg rounded-lg relative " >
+      <div className="flex flex-col items-center p-6 max-w-lg mx-auto mt-15 bg-white shadow-lg rounded-lg relative "  data-aos="fade-up">
 
       
 <div className="flex items-center space-x-4">

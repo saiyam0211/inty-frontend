@@ -26,12 +26,12 @@ const Services = () => {
 
     ]      
   return (
-    <section className="py-12 px-6 md:px-12 lg:px-24 text-center  mb-12">
+    <section className="py-12 px-6 md:px-12 lg:px-24 text-center  mb-12" >
       <h3 className="text-[#006452] text-lg font-semibold">Our Services</h3>
       <h2 className="text-3xl md:text-4xl font-bold mt-2">Find Whatever You Want</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
         {services.map((service, index) => (
-          <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
+          <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden"  data-aos="fade-up">
             <img src={service.image} alt={service.title} className="w-full h-52 object-cover" />
             <div className="p-4">
               <h3 className="text-lg font-semibold">{service.title}</h3>

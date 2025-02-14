@@ -19,7 +19,7 @@ const Features = () => {
       {/* Partner Logos */}
       <div className="mt-8 grid grid-cols-2 md:grid-cols-4  gap-6 md:gap-10 lg:justify-center w-[80%] pt-10 m-auto items-center">
         {partners.map((partner, index) => (
-          <img
+          <img  data-aos="fade-right"
             key={index}
             src={partner.image}
             className="w-30 md:w-32 sm:w-40 lg:w-30 object-contain mx-auto"

@@ -7,7 +7,7 @@ const Hero = () => {
     style={{ backgroundImage: "url('./images/hero-bg.png')" }}
   >
     {/* Left Content */}
-    <div className="max-w-xl text-white text-center lg:text-left lg:ml-16">
+    <div className="max-w-xl text-white text-center lg:text-left lg:ml-16"  data-aos="fade-up">
       <h1 className="text-3xl pt-2 sm:text-5xl md:text-6xl lg:text-6xl font-bold">
         Welcome to Inty
       </h1>
@@ -22,13 +22,13 @@ const Hero = () => {
     {/* Right Image Section */}
     <div className="relative flex space-x-3 h-full items-center justify-center sm:space-x-5 md:space-x-6 lg:space-x-8 mt-8 lg:mt-0">
       {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-95 md:h-95  bg-white rounded-full overflow-hidden shadow-lg"> */}
-        <img src="./images/1.png" alt="Designer" className="w-full  h-90 lg:h-130 object-contain translate-y-10" />
+        <img src="./images/1.png"  data-aos="fade-right" alt="Designer" className="w-full  h-90 lg:h-130 object-contain translate-y-10" />
       {/* </div> */}
       {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-120 md:h-120 bg-white rounded-full overflow-hidden shadow-lg transform -translate-y-8 sm:-translate-y-8  md:-translate-y-8 lg:-translate-y-8"> */}
-        <img src="/images/2.png" alt="Carpenter" className="w-full h-90  lg:h-130 object-contain -translate-y-10" />
+        <img src="/images/2.png" alt="Carpenter" data-aos="fade-up" className="w-full h-90  lg:h-130 object-contain -translate-y-10" />
       {/* </div> */}
-      {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-95 md:h-95 bg-white rounded-full overflow-hidden shadow-lg"> */}
-        <img src="/images/3.png" alt="Interior Design" className="w-full  h-90  lg:h-130 object-contain translate-y-10"  />
+      {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-95 md:h-95 bg-whtite rounded-full overflow-hidden shadow-lg"> */}
+        <img src="/images/3.png" alt="Interior Design" data-aos="fade-left" className="w-full  h-90  lg:h-130 object-contain translate-y-10"  />
       {/* </div> */}
     </div>
   </section>
