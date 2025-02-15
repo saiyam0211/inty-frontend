@@ -20,15 +20,15 @@ const Hero = () => {
     </div>
   
     {/* Right Image Section */}
-    <div className="relative flex space-x-3   items-center justify-center sm:space-x-5 md:space-x-6 lg:space-x-8 mt-8 lg:mt-0">
+    <div className="relative flex space-x-3  items-center justify-center sm:space-x-5 md:space-x-6 lg:space-x-8 mt-8 lg:mt-0">
       {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-95 md:h-95  bg-white rounded-full overflow-hidden shadow-lg"> */}
-        <img src="./images/1.png"  data-aos="fade-right" alt="Designer" className="w-full  h-110 lg:h-130 object-contain translate-y-10" />
+        <img src="./images/1.png"  data-aos="zoom-in-up" alt="Designer" className="w-full  h-110 lg:h-130 object-contain translate-y-10" />
       {/* </div> */}
       {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-120 md:h-120 bg-white rounded-full overflow-hidden shadow-lg transform -translate-y-8 sm:-translate-y-8  md:-translate-y-8 lg:-translate-y-8"> */}
-        <img src="/images/2.png" alt="Carpenter" data-aos="fade-up" className="w-full h-110  lg:h-130 object-contain -translate-y-10" />
+        <img src="/images/2.png" alt="Carpenter" data-aos="zoom-in-up" className="w-full h-110  lg:h-130 object-contain -translate-y-10" />
       {/* </div> */}
       {/* <div className="w-24 sm:w-28 md:w-32 h-90 sm:h-95 md:h-95 bg-whtite rounded-full overflow-hidden shadow-lg"> */}
-      <img src="/images/3.png" alt="Interior Design" data-aos="fade-left" data-aos-anchor-placement="center-bottom" className="w-full overflow-hidden h-110 lg:h-130 object-contain translate-y-10" />
+      <img src="/images/3.png" alt="Interior Design" data-aos="zoom-in-up" data-aos-anchor-placement="center-bottom" className="w-full overflow-hidden h-110 lg:h-130 object-contain translate-y-10" />
       {/* </div> */}
     </div>
   </section>
