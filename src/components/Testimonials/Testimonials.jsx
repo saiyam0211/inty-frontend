@@ -52,12 +52,17 @@ export default function TestimonialSlider() {
   };
 
   return (
-    <div className="relative w-full mx-auto overflow-hidden">
+    <section className="py-12 px-6 md:px-12 lg:px-24 text-center">
+       <h3 className="text-[#006452] text-lg font-semibold">Testimonials</h3>
+            <h2 className="text-3xl md:text-4xl font-bold mt-2">What Our Clients Says </h2>
+     
+
+            <div className="relative w-full mx-auto mt-10 overflow-hidden">
       <div className="flex justify-center items-center space-x-4">
         {/* Previous Testimonial */}
         <motion.div
           key={`prev-${index}`}
-          className="w-1/3 p-4 rounded-2xl shadow-lg opacity-30 transition-all duration-500 hidden md:block"
+          className="w-2/3 p-4 rounded-2xl shadow-lg opacity-30 transition-all duration-500 hidden md:block"
           initial={{ opacity: 0.3, x: -50 }}
           animate={{ opacity: 0.3, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -68,7 +73,7 @@ export default function TestimonialSlider() {
         {/* Active Testimonial */}
         <motion.div
           key={testimonials[index].id}
-          className="w-full md:w-2/3 bg-white p-6 rounded-2xl shadow-xl transition-all"
+          className="w-2/3 md:w-2/3 bg-white p-6 rounded-2xl shadow-xl transition-all"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
@@ -80,7 +85,7 @@ export default function TestimonialSlider() {
         {/* Next Testimonial */}
         <motion.div
           key={`next-${index}`}
-          className="w-1/3 p-4 rounded-2xl shadow-lg opacity-30 transition-all duration-500 hidden md:block"
+          className="w-2/3 p-4 rounded-2xl shadow-lg opacity-30 transition-all duration-500 hidden md:block"
           initial={{ opacity: 0.3, x: 50 }}
           animate={{ opacity: 0.3, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -104,6 +109,8 @@ export default function TestimonialSlider() {
         <FaChevronRight className="text-gray-700" />
       </button>
     </div>
+    </section>
+ 
   );
 }
 

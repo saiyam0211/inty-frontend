@@ -6,6 +6,7 @@ import OurPartners from '../../components/OurPartners/OurPartners'
 import Designers from '../../components/Designers/Designers'
 import Navbar from '../../components/Navbar/Navbar'
 import Features from '../../components/Features/Features'
+import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Designers/>
       <OurPartners/>
       <Testimonials/>
+      <Footer/>
     </div>
   )
 }
