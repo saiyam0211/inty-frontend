@@ -7,12 +7,14 @@ import Designers from '../../components/Designers/Designers'
 import Navbar from '../../components/Navbar/Navbar'
 import Features from '../../components/Features/Features'
 import Footer from '../../components/Footer/Footer'
+import Search from '../../components/Search/Search'
 
 const Home = () => {
   return (
     <div>
       <Navbar/>
       <Services/>
+      <Search/>
       <Hero/>
       <Features/>
       <Designers/>
