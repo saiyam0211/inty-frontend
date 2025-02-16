@@ -1,11 +1,11 @@
 import React from 'react'
 import { SignUp } from "@clerk/clerk-react";
 import Navbar from '../../components/Navbar/Navbar';
-const Signup = () => {
+const Register = () => {
   return (
     <>
       <Navbar />
-      <div className='clerk-container'>
+       <div className='clerk-container'>
       <SignUp />
     </div>
     </>
@@ -13,4 +13,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Register

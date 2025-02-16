@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
-import SignUp from "./pages/SignUp/Signup";
+import SignUp from "./pages/Register/Register";
 import LogIn from "./pages/LogIn/LogIn";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS CSS
