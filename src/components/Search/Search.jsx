@@ -22,16 +22,16 @@ const Search = () => {
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
             <select class="w-full p-2 border rounded-lg text-gray-700 focus:outline-none">
-                <option>Project Type</option>
+                <option className='text-sm'>Project Type</option>
             </select>
             <select class="w-full p-2 border rounded-lg text-gray-700 focus:outline-none">
-                <option>Design Style</option>
+                <option className='text-sm'>Design Style</option>
             </select>
             <select class="w-full p-2 border rounded-lg text-gray-700 focus:outline-none">
-                <option>Price Range</option>
+                <option className='text-sm'>Price Range</option>
             </select>
             <select class="w-full p-2 border rounded-lg text-gray-700 focus:outline-none">
-                <option>Availability</option>
+                <option className='text-sm'>Availability</option>
             </select>
         </div>
     </div>

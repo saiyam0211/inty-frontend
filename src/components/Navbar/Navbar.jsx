@@ -21,10 +21,10 @@ const Navbar = () => {
 
       {/* Book Now Button */}
       <a
-        href="#"
+        href="login"
         className="hidden md:block w-[160px] h-[40px] text-white bg-[#006452] rounded-md text-center leading-[40px] hover:bg-[#006452] transition"
       >
-        Book Now
+       Signin
       </a>
 
       {/* Mobile Menu Button */}
