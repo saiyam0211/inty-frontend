@@ -13,7 +13,7 @@ const Features = () => {
       {/* Headings */}
       <h3 className="text-[#006452] text-lg font-semibold">Our Features</h3>
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">
-        Our Long Time Partners
+      Why We Stand Out
       </h2>
 
       {/* Partner Logos */}
@@ -22,7 +22,7 @@ const Features = () => {
           <img  data-aos="fade-right"
             key={index}
             src={partner.image}
-            className="w-30 md:w-32 sm:w-40 lg:w-30 object-contain mx-auto"
+            className="w-20 md:w-32 sm:w-40 lg:w-30 object-contain mx-auto"
             alt={`Partner ${index + 1}`}
           />
         ))}

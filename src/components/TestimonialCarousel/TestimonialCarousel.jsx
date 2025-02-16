@@ -14,19 +14,19 @@ const TestimonialCarousel = () => {
   const testimonials = [
     {
       image: image1,  
-      quote: "Aut nihil mollitia deserunt quia sed rem. Quibusdam amet veniam rerum id rerum beatae.",
+      quote: "Aut nihil mollitia deserunt quia sed rem. Quibusdam amet veniam rerum id rerum beatae. Quas rerum iste necessitatibus. At voluptates ad magnam blanditiis excepturi expedita aut. Aut repellat inventore qui minima illum est.",
       name: "Kyle Merwin",
       title: "Co-owner"
     },
     {
       image: image2,
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      quote: "Aut nihil mollitia deserunt quia sed rem. Quibusdam amet veniam rerum id rerum beatae. Quas rerum iste necessitatibus. At voluptates ad magnam blanditiis excepturi expedita aut. Aut repellat inventore qui minima illum est.",
       name: "Jane Smith",
       title: "Product Manager"
     },
     {
       image: image3,
-      quote: "Excepteur sint occaecat cupidatat non proident.",
+      quote: "Aut nihil mollitia deserunt quia sed rem. Quibusdam amet veniam rerum id rerum beatae. Quas rerum iste necessitatibus. At voluptates ad magnam blanditiis excepturi expedita aut. Aut repellat inventore qui minima illum est.",
       name: "John Doe",
       title: "Senior Developer"
     }
