@@ -8,6 +8,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import Features from '../../components/Features/Features'
 import Footer from '../../components/Footer/Footer'
 import Search from '../../components/Search/Search'
+import TestimonialCarousel from '../../components/TestimonialCarousel/TestimonialCarousel'
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
       <Features/>
       <Designers/>
       <OurPartners/>
-      <Testimonials/>
+      <TestimonialCarousel/>
       <Footer/>
         
     </div>
