@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import SignUp from "./pages/SignUp/SignUp";
+import LogIn from "./pages/LogIn/LogIn";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS CSS
 
@@ -18,6 +19,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<LogIn />} />
     </Routes>
   );
 };
