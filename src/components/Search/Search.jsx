@@ -2,9 +2,9 @@ import React from 'react'
 
 const Search = () => {
   return (
-    <section className="py-5 mb-15 px-6 md:px-12 lg:px-24 text-center flex justify-center items-center  mb-12" >
+    <section className="py-5  px-6 md:px-12 lg:px-24 text-center flex justify-center items-center  mb-15" >
 
-<div class="w-full max-w-6xl px-4 text-center">
+<div class="w-full max-w-6xl px-4 text-center"  data-aos="fade-up">
         <h2 class="text-lg md:text-xl font-semibold text-[#006452] mb-4">
             We help you find and compare the best interior companies, designers and carpenters
         </h2>
