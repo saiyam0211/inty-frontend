@@ -7,9 +7,10 @@ export default function CompanyCard({ company }) {
       {/* Review Section */}
       <div className="flex justify-between p-4">
         <img src={googlereview} alt="Review" />
-        <button className="button w-[96px] h-[31px] bg-[rgba(0,100,82,0.4)] text-white rounded-[8px] mt-[18px] hover:bg-[rgba(0,100,82,0.6)]">
+        <a href="./compare"><button className="button w-[96px] h-[31px] bg-[#006452] text-white rounded-[8px] mt-[18px] hover:bg-[rgba(0,100,82,0.6)]">
           Compare
         </button>
+        </a>
       </div>
 
       {/* Image Section */}
@@ -18,7 +19,7 @@ export default function CompanyCard({ company }) {
       </div>
 
       {/* Company Details */}
-      <div className="bg-[rgba(0,100,82,0.4)] text-white w-full p-2 rounded-t-[8px] mt-3 hover:bg-[#006452] transition duration-300 flex flex-col gap-4">
+      <div className="bg-[#006452] text-white w-full p-2 rounded-t-[8px] mt-3 hover:bg-[#006452] transition duration-300 flex flex-col gap-4">
         <div className="flex justify-between">
           <div className="flex flex-col">
           <p className="text-[22px] font-bold" style={{fontWeight: 700, fontSize: '22px', lineHeight: '26.63px', letterSpacing: '0%' }}>{company.projects}+</p>
@@ -36,9 +37,10 @@ export default function CompanyCard({ company }) {
           <p className="text-2xl font-bold" style={{fontWeight: 700, fontSize: '22px', lineHeight: '26.63px', letterSpacing: '0%' }}>{company.branches}+</p>
           <p style={{fontWeight: 500, fontSize: '12px', lineHeight: '14.52px', letterSpacing: '0%' }}>Branches</p>
         </div>
-        <button className="mt-1 p-2 bg-white w-full rounded-4xl text-blue-500">
+        <a href="./CompanyProfile"><button className="mt-1 p-2 bg-white w-full rounded-4xl text-blue-500">
           Know More
         </button>
+        </a>
       </div>
     </div>
   );

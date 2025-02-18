@@ -36,9 +36,10 @@ const Services = () => {
             <div className="p-4">
               <h3 className="text-lg font-semibold ">{service.title}</h3>
               <p className="text-gray-600 text-sm mt-2">{service.description}</p>
-              <button className="mt-4 px-6 py-2 bg-[#006452] text-white rounded-lg shadow-md hover:bg-[#005552] w-full">
+            <a href="./residential-space">  <button className="mt-4 px-6 py-2 bg-[#006452] text-white rounded-lg shadow-md hover:bg-[#005552] w-full">
                 Explore Companies
               </button>
+              </a>
             </div>
           </div>
         ))}
