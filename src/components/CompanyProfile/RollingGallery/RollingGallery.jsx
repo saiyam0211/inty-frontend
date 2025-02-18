@@ -1,141 +1,125 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useAnimation, useTransform } from "framer-motion";
-import "./RollingGallery.css";
+import React from "react";
+import {
+  motion,
+  useMotionValue,
+  useAnimation,
+  useTransform,
+} from "framer-motion";
 
-const IMGS = [
-  "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1495103033382-fe343886b671?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1506781961370-37a89d6b3095?q=80&w=3264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1599576838688-8a6c11263108?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1494094892896-7f14a4433b7a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://plus.unsplash.com/premium_photo-1664910706524-e783eed89e71?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1503788311183-fa3bf9c4bc32?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1585970480901-90d6bb2a48b5?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-];
+const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
+  // Create array of placeholder images
+  const images = [
+    "https://images.unsplash.com/photo-1528181304800-259b08848526?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1506665531195-3566af2b4dfa?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1495103033382-fe343886b671?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1506781961370-37a89d6b3095?q=80&w=3264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1599576838688-8a6c11263108?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1494094892896-7f14a4433b7a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://plus.unsplash.com/premium_photo-1664910706524-e783eed89e71?q=80&w=3869&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1503788311183-fa3bf9c4bc32?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "https://images.unsplash.com/photo-1585970480901-90d6bb2a48b5?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  ];
 
-const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] }) => {
-  images = IMGS;
-  const [isScreenSizeSm, setIsScreenSizeSm] = useState(window.innerWidth <= 640);
-
-  const cylinderWidth = isScreenSizeSm ? 1100 : 1800;
+  const cylinderWidth = 2400;
   const faceCount = images.length;
-  const faceWidth = (cylinderWidth / faceCount) * 1.5; // Increased width for items
-  const dragFactor = 0.05;
+  const faceWidth = (cylinderWidth / faceCount) * 1.75;
   const radius = cylinderWidth / (2 * Math.PI);
 
   const rotation = useMotionValue(0);
   const controls = useAnimation();
-  const autoplayRef = useRef();
+  const transform = useTransform(
+    rotation,
+    (val) => `rotate3d(0,1,0,${val}deg)`
+  );
 
-  const handleDrag = (_, info) => {
-    rotation.set(rotation.get() + info.offset.x * dragFactor);
-  };
+  React.useEffect(() => {
+    if (autoplay) {
+      startInfiniteSpin(0);
+    }
+  }, [autoplay]);
 
-  const handleDragEnd = (_, info) => {
+  const startInfiniteSpin = (startAngle) => {
     controls.start({
-      rotateY: rotation.get() + info.velocity.x * dragFactor,
-      transition: { type: "spring", stiffness: 60, damping: 20, mass: 0.1, ease: "easeOut" },
+      rotateY: [startAngle, startAngle - 360],
+      transition: {
+        duration: 20,
+        ease: "linear",
+        repeat: Infinity,
+      },
     });
   };
 
-  const transform = useTransform(rotation, (value) => {
-    return `rotate3d(0, 1, 0, ${value}deg)`;
-  });
+  const handleDrag = (_, info) => {
+    controls.stop();
+    rotation.set(rotation.get() + info.offset.x * 0.05);
+  };
 
-  // Autoplay effect with adjusted timing
-  useEffect(() => {
-    if (autoplay) {
-      autoplayRef.current = setInterval(() => {
-        controls.start({
-          rotateY: rotation.get() - (360 / faceCount),
-          transition: { duration: 2, ease: "linear" },
-        });
-        rotation.set(rotation.get() - (360 / faceCount));
-      }, 2000);
+  const handleDragEnd = (_, info) => {
+    const finalAngle = rotation.get() + info.velocity.x * 0.05;
+    rotation.set(finalAngle);
+    if (autoplay) startInfiniteSpin(finalAngle);
+  };
 
-      return () => clearInterval(autoplayRef.current);
-    }
-  }, [autoplay, rotation, controls, faceCount]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsScreenSizeSm(window.innerWidth <= 640);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Pause on hover with smooth transition
   const handleMouseEnter = () => {
-    if (autoplay && pauseOnHover) {
-      clearInterval(autoplayRef.current);
-      controls.stop(); // Stop the animation smoothly
-    }
+    if (autoplay && pauseOnHover) controls.stop();
   };
 
   const handleMouseLeave = () => {
-    if (autoplay && pauseOnHover) {
-      controls.start({
-        rotateY: rotation.get() - (360 / faceCount),
-        transition: { duration: 2, ease: "linear" },
-      });
-      rotation.set(rotation.get() - (360 / faceCount));
-
-      autoplayRef.current = setInterval(() => {
-        controls.start({
-          rotateY: rotation.get() - (360 / faceCount),
-          transition: { duration: 2, ease: "linear" },
-        });
-        rotation.set(rotation.get() - (360 / faceCount));
-      }, 2000);
-    }
+    if (autoplay && pauseOnHover) startInfiniteSpin(rotation.get());
   };
 
   return (
-    <section className="py-12 px-6 md:px-12 lg:px-24 text-center">
-    {/* Headings */}
-    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">
-      See Our Previous Works
-    </h2>
-          <div className="gallery-container">
-            
-            <div className="gallery-gradient gallery-gradient-left"></div>
-            <div className="gallery-gradient gallery-gradient-right"></div>
-            <div className="gallery-content">
-              <motion.div
-                drag="x"
-                className="gallery-track"
-                onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+    <div className="w-full">
+      <h2 className="text-4xl font-bold text-center mb-16 mt-8">
+        See our previous works
+      </h2>
+      <div className="relative h-[500px] w-full overflow-hidden">
+        <div className="absolute top-0 left-0 h-full w-[48px] z-10 bg-gradient-to-l from-transparent to-white" />
+        <div className="absolute top-0 right-0 h-full w-[48px] z-10 bg-gradient-to-r from-transparent to-white" />
+
+        <div className="flex h-full items-center justify-center [perspective:1000px]">
+          <motion.div
+            drag="x"
+            dragElastic={0}
+            onDrag={handleDrag}
+            onDragEnd={handleDragEnd}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            animate={controls}
+            style={{
+              transform,
+              rotateY: rotation,
+              width: cylinderWidth,
+              transformStyle: "preserve-3d",
+            }}
+            className="flex min-h-[200px] cursor-grab items-center justify-center"
+          >
+            {images.map((url, i) => (
+              <div
+                key={i}
+                className="group absolute flex h-fit items-center justify-center p-[6%]"
                 style={{
-                  transform: transform,
-                  rotateY: rotation,
-                  width: cylinderWidth,
-                  transformStyle: "preserve-3d",
+                  width: `${faceWidth}px`,
+                  transform: `rotateY(${
+                    (360 / faceCount) * i
+                  }deg) translateZ(${radius}px)`,
+                  backfaceVisibility: "hidden",
                 }}
-                onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
-                animate={controls}
               >
-                {images.map((url, i) => (
-                  <div
-                    key={i}
-                    className="gallery-item"
-                    style={{
-                      width: `${faceWidth}px`,
-                      transform: `rotateY(${i * (360 / faceCount)}deg) translateZ(${radius}px)`,
-                    }}
-                  >
-                    <img src={url} alt="gallery" className="gallery-img" />
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-    </section>
-   
+                <div className="relative w-[400px] h-[300px] rounded-[30px] overflow-hidden shadow-lg transform transition-transform duration-300 group-hover:scale-105">
+                  <img
+                    src={url}
+                    alt={`gallery-${i}`}
+                    className="w-full h-full object-cover border-4 border-white rounded-[30px]"
+                  />
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
   );
 };
 
