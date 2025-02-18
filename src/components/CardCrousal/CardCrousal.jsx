@@ -45,9 +45,11 @@ const CarouselCard = ({ data, position }) => {
               </div>
               </p>
            </div>
-            <button className="px-3 py-1 bg-[#006452] text-white rounded-md text-sm">
+           <a href="./compare">
+           <button className="px-3 py-1 bg-[#006452] text-white rounded-md text-sm">
               Compare
             </button>
+           </a> 
           </div>
   
           <div className="flex justify-center mb-4">
@@ -77,9 +79,11 @@ const CarouselCard = ({ data, position }) => {
               <span className="text-sm text-white">Branches</span>
             </div>
   
+            <a href="./CompanyProfile">
             <button className="w-full bg-white text-[#006452] py-2 rounded-md hover:bg-teal-50 transition-colors">
               Know More
             </button>
+              </a>
           </div>
         </div>
       </div>
