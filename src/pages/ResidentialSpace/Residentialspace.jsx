@@ -1,3 +1,4 @@
+import { useUser } from "@clerk/clerk-react";
 import { Button } from "../../components/ui/Button";
 import backgroundImage from "../../assets/background.png";
 import lock from "../../assets/lock.png";
@@ -59,6 +60,7 @@ const companies = [
 ];
 
 export default function ResidentailSpace() {
+     const { isSignedIn } = useUser();
   return (
     <div className="bg-white">
       {/* Header Section */}
@@ -79,38 +81,82 @@ export default function ResidentailSpace() {
 
       {/* Search Section */}
       <div className="p-4">
-        <div className="bg-white p-4 shadow-md rounded-md">
+        <div className="bg-white p-4">
           <Search />
         </div>
 
-        {/* Login Section */}
-        <div 
-  className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
-  style={{
-    background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),
-                 linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)`
-  }}
->
-          <img className="w-16 h-16" src={lock} alt="Lock" />
-          <h3 className="text-2xl font-semibold mb-4">Login to see all...</h3>
-          <Button
-            onClick={() => (window.location.href = "/login")}
-            className="bg-teal-600 hover:bg-teal-700"
-          >
-            Login
-          </Button>
-        </div>
 
-        {/* Company Cards Section */}
-        <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px] ">
-          {companies.map((company) => (
-            <CompanyCard key={company.id} company={company} />
-          ))}
+
+
+
+
+
+
+
+
+{/* Private Content (Only for Logged-in Users) */}
+{isSignedIn ? (
+        <div>
+           {/* Company Cards Section */}
+            <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px] ">
+                        {companies.map((company) => (
+                            <CompanyCard key={company.id} company={company} />
+                        ))}
+                        </div>
+
         </div>
+      ) : (
+
+        // if user not loged in then below section visible 
+                   <p>
+
+                   {/* Login Section */}
+                        <div 
+                className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
+                style={{
+                    background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),
+                                linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)`
+                }}
+                >
+                        <img className="w-16 h-16" src={lock} alt="Lock" />
+                        <h3 className="text-2xl font-semibold mb-4">Login to see all...</h3>
+                        <Button
+                            onClick={() => (window.location.href = "/login")}
+                            className="bg-teal-600 hover:bg-teal-700"
+                        >
+                            Login
+                        </Button>
+                        </div>
+
+                        {/* Company Cards Section */}
+                        <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px] ">
+                        {companies.map((company) => (
+                            <CompanyCard key={company.id} company={company} />
+                        ))}
+                        </div>
+
+        </p>
+     
+     
+     
+     
+     
+     
+     
+     )}
+
+
+
+
+
+       
       </div>
 
       {/* Footer Section */}
-      <Footer />
+      <div className="mt-20">
+         <Footer  />
+      </div>
+     
     </div>
   );
 }
