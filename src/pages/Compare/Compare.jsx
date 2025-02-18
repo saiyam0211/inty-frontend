@@ -3,7 +3,7 @@ import backgroundImage from "../../assets/background.png";
 import Header from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Table from "../../components/Table/Table";
-
+import CardCrousal from "../../components/CardCrousal/CardCrousal"
 const Compare = () => {
   return (
     <>
@@ -24,9 +24,12 @@ const Compare = () => {
         </h2>
       </section>
 
-      <div className='p-4'>
+      <div className='p-4 mb-10'>
         <Table/>
       </div>
+
+      
+      <CardCrousal/>
 
 
       {/* Footer Section */}
