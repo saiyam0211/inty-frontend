@@ -6,6 +6,8 @@ import LogIn from "./pages/LogIn/LogIn";
 import ResidentialSpace from "./pages/ResidentialSpace/Residentialspace";
 import AOS from "aos";
 import "aos/dist/aos.css"; // Import AOS CSS
+import InteriorDesigner from "./pages/InteriorDesigner/InteriorDesigner";
+import Compare from "./pages/Compare/Compare";
 
 const App = () => {
   useEffect(() => {
@@ -21,6 +23,12 @@ const App = () => {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<LogIn />} />
       <Route path="/residential-space" element={<ResidentialSpace />} />
+      <Route path="/interiordesigner" element={<InteriorDesigner />} />
+      <Route path="/compare" element={<Compare />} />
+
+
+
+
     </Routes>
    
   );

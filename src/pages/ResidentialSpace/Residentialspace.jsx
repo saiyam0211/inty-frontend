@@ -60,7 +60,7 @@ const companies = [
 
 export default function ResidentailSpace() {
   return (
-    <div className="bg-white">
+    <div className="bg-transparent">
       {/* Header Section */}
       <div className="absolute top-0 left-0 w-full bg-transparent z-50">
         <Header />
@@ -85,7 +85,7 @@ export default function ResidentailSpace() {
 
         {/* Login Section */}
         <div 
-  className="absolute inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
+  className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
   style={{
     background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),
                  linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)`
@@ -102,7 +102,7 @@ export default function ResidentailSpace() {
         </div>
 
         {/* Company Cards Section */}
-        <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px]">
+        <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px] ">
           {companies.map((company) => (
             <CompanyCard key={company.id} company={company} />
           ))}
