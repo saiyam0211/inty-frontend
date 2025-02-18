@@ -10,7 +10,7 @@ const Hero = () => {
                 <p className='h-20 md:h-25 bg-black w-[3px]'></p>
                 <div className="flex items-center flex-col sm:flex-row gap-2">
                     <img src="./images/google-icon.png" alt="Google Icon" className="h-10 md:h-12" />
-                    <p className="text-gray-600 text-sm md:text-base text-white">23 Reviews <br/> ⭐⭐⭐⭐⭐</p>
+                    <p className=" text-sm md:text-base text-white">23 Reviews <br/> ⭐⭐⭐⭐⭐</p>
                 </div>
             </div>
             <div className="mt-4 flex flex-col md:flex-row justify-center gap-4 w-full">

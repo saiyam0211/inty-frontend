@@ -12,7 +12,7 @@ const CompanyProfile = () => {
        <Header/>
        <Description/>
       <RollingGallery autoplay={true} pauseOnHover={true} />
-
+    
       <TestimonialCarousel/>
       <Footer/>
     </div>
