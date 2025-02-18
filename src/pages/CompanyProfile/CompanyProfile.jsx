@@ -15,8 +15,13 @@ const CompanyProfile = () => {
       <Description />
       <RollingGallery autoplay={true} pauseOnHover={true} />
 
+    
+      <TestimonialCarousel/>
+      <Footer/>
+
       <TestimonialCarousel />
       <Footer />
+
     </div>
   );
 };

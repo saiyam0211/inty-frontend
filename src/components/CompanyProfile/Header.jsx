@@ -17,6 +17,22 @@ const Hero = () => {
   };
 
   return (
+
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-l from-[#006452] to-white p-5">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-20 p-6 rounded-lg text-center w-full ">
+        <div className="flex flex-col items-center">
+            <div className="flex items-center px-10 justify-center gap-2">
+                <img src="./images/company-logo.png" alt="Decorpot Logo" className="h-24 md:h-40" />
+                <p className='h-20 md:h-25 bg-black w-[3px]'></p>
+                <div className="flex items-center flex-col sm:flex-row gap-2">
+                    <img src="./images/google-icon.png" alt="Google Icon" className="h-10 md:h-12" />
+                    <p className=" text-sm md:text-base text-white">23 Reviews <br/> ⭐⭐⭐⭐⭐</p>
+                </div>
+            </div>
+            <div className="mt-4 flex flex-col md:flex-row justify-center gap-4 w-full">
+                <button className="px-4 py-2 w-full md:w-[40%] bg-[#006452] text-white rounded-md hover:bg-[#004d3b]">Add to Compare</button>
+                <button className="px-4 py-2 w-full md:w-[40%] bg-[#006452] text-white rounded-md hover:bg-[#004d3b]">Enquire Now</button>
+
     <motion.div
       initial="initial"
       animate="animate"
@@ -55,6 +71,7 @@ const Hero = () => {
               >
                 23 Reviews <br /> ⭐⭐⭐⭐⭐
               </motion.p>
+
             </div>
           </motion.div>
           <motion.div
