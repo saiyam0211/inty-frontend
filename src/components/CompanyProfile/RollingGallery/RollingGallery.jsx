@@ -70,7 +70,7 @@ const RollingGallery = ({ autoplay = true, pauseOnHover = true }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-30">
       <h2 className="text-4xl font-bold text-center mb-16 mt-8">
         See our previous works
       </h2>
