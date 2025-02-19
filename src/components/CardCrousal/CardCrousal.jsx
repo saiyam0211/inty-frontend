@@ -139,7 +139,7 @@ const Carousel = () => {
           <ChevronLeft className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
         </button>
 
-        <div className="relative w-full h-[500px] overflow-hidden">
+        <div className="relative w-full h-[600px] overflow-hidden">
           <div className="absolute inset-0 flex items-center  w-full justify-center gap-6">
             {cardsData.map((card, index) => (
               <CarouselCard key={card.id} data={card} position={getCardPosition(index)} />

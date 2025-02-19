@@ -66,7 +66,7 @@ export default function ResidentialSpace() {
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
-      <div className="flex justify-center items-center space-x-4 mt-8 mb-8">
+      <div className="flex justify-center items-center space-x-4 mt-20 mb-8">
         <button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
@@ -106,7 +106,7 @@ export default function ResidentialSpace() {
     <div className="bg-white">
       {/* Header Section */}
       <div className="absolute top-0 left-0 w-full bg-transparent z-50">
-        <Header />
+        <Header isResidentialPage={true} />
       </div>
 
       {/* Hero Section */}
@@ -163,7 +163,7 @@ export default function ResidentialSpace() {
                   className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
                   style={{
                     background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),
-                                linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)`
+                               `
                   }}
                 >
                   <img className="w-16 h-16" src={lock} alt="Lock" />
@@ -190,8 +190,8 @@ export default function ResidentialSpace() {
       </div>
 
       {/* Footer Section */}
-      <div className="mt-10">
-        <Footer />
+      <div className="mt-20">
+         <Footer  />
       </div>
     </div>
   );

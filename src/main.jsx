@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { ClerkProvider } from "@clerk/clerk-react"; // ✅ Correct Import
+import { ClerkProvider } from "@clerk/clerk-react";
 import "./index.css";
 import App from "./App.jsx";
 
@@ -11,11 +11,17 @@ if (!clerk_key) {
   throw new Error("Clerk Publishable Key was not found.");
 }
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <ClerkProvider publishableKey={clerk_key}>
-        <App />
-      </ClerkProvider>
-   </BrowserRouter>
+    <ClerkProvider 
+      publishableKey={clerk_key}
+      routing="path"
+      signInUrl="/login"
+      signUpUrl="/signup"
+      afterSignInUrl="/"
+      afterSignUpUrl="/"
+    >
+      <App />
+    </ClerkProvider>
+  </BrowserRouter>
 );
