@@ -11,6 +11,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import InteriorDesigner from "./pages/InteriorDesigner/InteriorDesigner";
 
 const App = () => {
   useEffect(() => {
@@ -24,9 +25,10 @@ const App = () => {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
-      <Route path="/signup/*" element={<SignUp />} />
-      <Route path="/login/*" element={<LogIn />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<LogIn />} />
       <Route path="/residential-space" element={<ResidentialSpace />} />
+      <Route path="/interiordesigner" element={<InteriorDesigner/>} />
       <Route path="/CompanyProfile" element={<CompanyProfile />} />
       <Route path="/Compare" element={<Compare />} />
 

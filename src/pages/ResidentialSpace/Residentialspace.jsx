@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useUser } from "@clerk/clerk-react";
+import axios from 'axios';
 import { Button } from "../../components/ui/Button";
 import backgroundImage from "../../assets/background.png";
 import lock from "../../assets/lock.png";
@@ -7,7 +8,6 @@ import CompanyCard from "../../components/Cards/Cards";
 import Header from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Search from "../../components/Search/Search";
-import axios from 'axios';
 
 const API_URL = 'https://inty-backend.onrender.com/api/companies'; // Fixed API URL
 const ITEMS_PER_PAGE = 6;
@@ -157,7 +157,8 @@ export default function ResidentialSpace() {
                 <div 
                   className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
                   style={{
-                    background: 'linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),'
+                    background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),
+                                 linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)`
                   }}
                 >
                   <img className="w-16 h-16" src={lock} alt="Lock" />
