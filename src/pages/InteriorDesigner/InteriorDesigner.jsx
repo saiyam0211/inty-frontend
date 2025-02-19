@@ -66,31 +66,25 @@ const InteriorDesigner = () => {
       </div>
 
       {/* Carousel & Filtered ProfileCards */}
-
-      <div className=" md:grid md:grid-cols-2">
-        {filteredProfiles.length > 0 ? (
-          filteredProfiles.map(profile => (
-            <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10 w-full ">
-              <div className='w-[350px] max-w-xs sm:max-w-md md:max-w-[550px] md:ml-8 md:transform md:translate-x-1/16 md:translate-y-0 translate-y-5 '>
-                <Carousel />
-              </div>
-              <div className='w-full max-w-[352px] sm:max-w-md md:max-w-[500px] p-4 md:p-0 md:pr-12'>
-                <ProfileCard
-                  name={profile.name}
-                  rate={profile.rate}
-                  location={profile.location}
-                  reviewImage={profile.reviewImage}
-                  experience={profile.experience}
-                  projectsCompleted={profile.projectsCompleted}
-                />
-              </div>
+      {filteredProfiles.length > 0 ? (
+        filteredProfiles.map(profile => (
+          <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10">
+            <div className='w-full max-w-xs sm:max-w-md md:max-w-[550px] md:ml-16 md:transform md:translate-x-1/16 md:translate-y-0 translate-y-5 '>
+              <Carousel />
             </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-500 mt-8">No profiles available for this category.</p>
-        )}
-        
-      </div>
+            <div className='w-full max-w-[352px] sm:max-w-md md:max-w-[530px] md:pr-12  '>
+              <ProfileCard name={profile.name} projectsCompleted={profile.projectsCompleted} />
+            </div>
+          </div>
+        ))
+      ) : (
+        <p className="text-center text-gray-500 mt-8">No profiles available for this category.</p>
+       )}
+
+       <div className='p-6 flex flex-col gap-7'>
+       <LogoGrid/>
+
+       </div>
       
      
 

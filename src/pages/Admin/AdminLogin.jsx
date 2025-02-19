@@ -12,7 +12,7 @@ const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const API_URL = 'http://localhost:5000/api';
+  const API_URL = 'https://inty-backend.onrender.com/api';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
