@@ -12,7 +12,7 @@ const LogoGrid = () => {
         <Marquee
           direction="left"
           gradient={false}
-          speed={100}
+          speed={120}
           className="flex justify-center gap-8 mb-6"
         >
           <img src={Banner2} alt="Logo 2" className="w-16 h-16 ml-40" />
