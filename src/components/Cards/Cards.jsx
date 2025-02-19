@@ -21,7 +21,7 @@ export default function CompanyCard({ company }) {
       </div>
 
       {/* Company Details */}
-      <div className="bg-[#006452]  text-white w-full p-4 rounded-[16px] mt-3 hover:bg-[#006452] transition duration-300 flex flex-col gap-4">
+      <div className="bg-[rgba(0,100,82,0.4)]  text-white w-full p-4 rounded-[16px] mt-3 hover:bg-[#006452] transition duration-300 flex flex-col gap-4">
         <div className="flex justify-between">
           <div className="flex flex-col">
           <p className="text-[22px] font-bold" style={{fontWeight: 700, fontSize: '22px', lineHeight: '26.63px', letterSpacing: '0%' }}>{company.projects}+</p>
