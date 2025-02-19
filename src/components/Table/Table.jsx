@@ -2,7 +2,8 @@ import intera from "../../assets/interra.png";
 import architect from "../../assets/architect.png";
 import banner from "../../assets/banner.png";
 import chair from "../../assets/chair.png";
-import Carousel from "../../components/TableCorousel/Tablecorousel"
+import Carousel from "../../components/TableCorousel/Tablecorousel";
+
 export default function ComparisonTable() {
   const data = [
     {
@@ -46,9 +47,9 @@ export default function ComparisonTable() {
     <div className="max-w-6xl h-auto mx-auto p-4 ">
       {/* Header Row */}
       <div className="grid grid-cols-4 text-center gap-[19px]">
-        <div className=" bg-white font-bold"></div>
+        <div className="p-4 bg-white font-bold"></div>
         {data.map((item, idx) => (
-          <div key={idx} className={`p-4 ${item.headerColor} flex items-center justify-center h-17 p-6 rounded-md z-50`}>
+          <div key={idx} className={`p-4 ${item.headerColor} flex items-center justify-center h-20 rounded-md`}>
             <img src={item.image} alt="Company Logo" className="h-16 w-auto" />
           </div>
         ))}
@@ -56,14 +57,14 @@ export default function ComparisonTable() {
 
       {/* Data Rows */}
       {details.map((row, rowIndex) => (
-        <div key={rowIndex} className={`grid grid-cols-4 gap-[19px] ${rowIndex === 0 ? '' : 'border-t-2 border-teal-600'}`}> 
+        <div key={rowIndex} className={`grid grid-cols-4 gap-[19px] ${rowIndex === 0 ? '' : 'border-t-2 border-teal-800'}`}> 
           <div className="bg-white font-bold flex items-center justify-start">
             {row.label}
           </div>
           {data.map((item, idx) => (
             <div 
               key={idx} 
-              className={`p-4  ${item.columnColor} flex items-center justify-center font-semibold ${rowIndex === details.length - 1 ? 'rounded-b-md' : ''}`}
+              className={`p-4 ${item.columnColor} flex items-center justify-center font-semibold ${rowIndex === details.length - 1 ? 'rounded-b-md' : ''}`}
             >
               {row.key ? (
                 row.key === "chair" ? (
