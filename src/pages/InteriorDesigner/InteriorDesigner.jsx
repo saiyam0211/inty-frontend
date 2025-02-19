@@ -1,38 +1,46 @@
-
 import React, { useState } from 'react';
+import review from "../../assets/googlereview.png";
 import backgroundImage from "../../assets/background.png";
 import Header from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import FocusLinks from '../../components/FocusLink/Focuslink';
+import TrueFocus from '../../components/FocusLink/Focuslink';
 import Carousel from "../../components/TableCorousel/Tablecorousel";
 import ProfileCard from '../../components/ProfileCard/Profilecard';
 import LogoGrid from '../../components/Logogrid/Logogrid';
 
-
 // Sample Data (Replace this with actual API data)
 const profiles = [
-  { id: 1, name: "Rahul Sharma", projectsCompleted: 180 },
-  { id: 2, name: "Priya Singh", projectsCompleted: 300 },
-  { id: 3, name: "Amit Patel", projectsCompleted: 120 },
-  { id: 4, name: "Neha Gupta", projectsCompleted: 200 },
-  { id: 5, name: "Vikram Singh", projectsCompleted: 400 },
-  { id: 6, name: "Anjali Mehta", projectsCompleted: 150 },
-  { id: 7, name: "Suresh Kumar", projectsCompleted: 260 },
+  { id: 1, name: "Rahul Sharma", rate: "₹ 250/hr", location: "Koramangala", reviewImage: review, experience: "8+", projectsCompleted: "180+" },
+  { id: 2, name: "Priya Singh", rate: "₹ 300/hr", location: "Indiranagar", reviewImage: review, experience: "10+", projectsCompleted: "300+" },
+  { id: 3, name: "Amit Patel", rate: "₹ 200/hr", location: "Whitefield", reviewImage: review, experience: "5+", projectsCompleted: "120+" },
+  { id: 4, name: "Neha Gupta", rate: "₹ 350/hr", location: "HSR Layout", reviewImage: review, experience: "9+", projectsCompleted: "200+" },
+  { id: 5, name: "Vikram Singh", rate: "₹ 400/hr", location: "Jayanagar", reviewImage: review, experience: "17+", projectsCompleted: "400+" },
+  { id: 6, name: "Anjali Mehta", rate: "₹ 220/hr", location: "BTM Layout", reviewImage: review, experience: "16+", projectsCompleted: "150+" },
+  { id: 7, name: "Suresh Kumar", rate: "₹ 280/hr", location: "Marathahalli", reviewImage: review, experience: "7+", projectsCompleted: "260+" },
+  { id: 8, name: "Ramesh Kumar", rate: "₹ 260/hr", location: "Sarjapur Road", reviewImage: review, experience: "15+", projectsCompleted: "100+" },
+  { id: 9, name: "Kavita Sharma", rate: "₹ 320/hr", location: "Electronic City", reviewImage: review, experience: "12+", projectsCompleted: "220+" },
+  { id: 10, name: "Arun Singh", rate: "₹ 380/hr", location: "Banashankari", reviewImage: review, experience: "11+", projectsCompleted: "350+" },
+  { id: 11, name: "Sunita Singh", rate: "₹ 240/hr", location: "Malleshwaram", reviewImage: review, experience: "6+", projectsCompleted: "180+" },
+  { id: 12, name: "Rajesh Mehta", rate: "₹ 300/hr", location: "Yelahanka", reviewImage: review, experience: "14+", projectsCompleted: "300+" },
 ];
 
-// Categories & Thresholds
+// Categories & Thresholds (Experience in years)
 const categories = {
-  "Basic": 150,
-  "Pro": 250,
-  "Pro Max": 300,
-  "Luxe": 400
+  "Basic": { min: 0, max: 7 },
+  "Standard": { min: 7, max: 12 },
+  "Premium": { min: 12, max: 17 },
+  "Luxury": { min: 17, max: Infinity }
 };
 
 const InteriorDesigner = () => {
   const [selectedCategory, setSelectedCategory] = useState("Basic");
 
   // Filter Profiles based on selected focus category
-  const filteredProfiles = profiles.filter(profile => profile.projectsCompleted >= categories[selectedCategory]);
+  const filteredProfiles = profiles.filter(profile => {
+    const experience = parseInt(profile.experience);
+    const { min, max } = categories[selectedCategory];
+    return experience >= min && experience < max;
+  });
 
   return (
     <div className="bg-white">
@@ -54,44 +62,38 @@ const InteriorDesigner = () => {
 
       {/* Focus Links (Pass the setSelectedCategory function) */}
       <div className="m-8 px-4">
-        <FocusLinks setSelectedCategory={setSelectedCategory} />
+        <TrueFocus sentence="Basic Standard Premium Luxury" onCategorySelect={setSelectedCategory} />
       </div>
 
       {/* Carousel & Filtered ProfileCards */}
-      {filteredProfiles.length > 0 ? (
-        filteredProfiles.map(profile => (
-          <div className='flex md:flex-row flex-col md:justify-around justify-center '>
-
-          <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10">
-            <div className='w-full max-w-xs sm:max-w-md md:max-w-[550px] md:ml-16 md:transform md:translate-x-1/5 md:translate-y-0 translate-y-5 '>
-              <Carousel />
+      <div className="flex flex-wrap justify-center gap-8">
+        {filteredProfiles.length > 0 ? (
+          filteredProfiles.map(profile => (
+            <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10 w-full ">
+              <div className='w-[350px] max-w-xs sm:max-w-md md:max-w-[550px] md:ml-8 md:transform md:translate-x-1/16 md:translate-y-0 translate-y-5 '>
+                <Carousel />
+              </div>
+              <div className='w-full max-w-[352px] sm:max-w-md md:max-w-[500px] p-4 md:p-0 md:pr-12'>
+                <ProfileCard
+                  name={profile.name}
+                  rate={profile.rate}
+                  location={profile.location}
+                  reviewImage={profile.reviewImage}
+                  experience={profile.experience}
+                  projectsCompleted={profile.projectsCompleted}
+                />
+              </div>
             </div>
-            <div className='w-full max-w-[352px] sm:max-w-md md:max-w-[500px] md:pr-12  '>
-              <ProfileCard name={profile.name} projectsCompleted={profile.projectsCompleted} />
-            </div>
-          </div>
-          <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10">
-            <div className='w-full max-w-xs sm:max-w-md md:max-w-[550px] md:ml-16 md:transform md:translate-x-1/5 md:translate-y-0 translate-y-5 '>
-              <Carousel />
-            </div>
-            <div className='w-full max-w-[352px] sm:max-w-md md:max-w-[530px] md:pr-12  '>
-              <ProfileCard name={profile.name} projectsCompleted={profile.projectsCompleted} />
-            </div>
-          </div>
-          </div>
-        ))
-      ) : (
-        <p className="text-center text-gray-500 mt-8">No profiles available for this category.</p>
-       )}
+          ))
+        ) : (
+          <p className="text-center text-gray-500 mt-8">No profiles available for this category.</p>
+        )}
+        
+      </div>
 
-
-
-       <div className='p-6 flex flex-col gap-7'>
-       <LogoGrid/>
-
-       </div>
-      
-
+      <div className='p-6 flex flex-col gap-7'>
+        <LogoGrid />
+      </div>
 
       {/* Footer Section */}
       <Footer />

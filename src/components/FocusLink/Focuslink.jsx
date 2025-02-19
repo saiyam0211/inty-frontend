@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const TrueFocus = ({
-  sentence = "Basic  Standard  Premium  Luxery ",
+  sentence = "Basic Standard Premium Luxury",
   manualMode = true,
   blurAmount = 7,
   borderColor = "green",
   glowColor = "rgba(0, 255, 0, 0.6)",
   animationDuration = 0.5,
   pauseBetweenAnimations = 1,
+  onCategorySelect, // Add this prop to handle category selection
 }) => {
   const words = sentence.split(" ");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -55,6 +56,12 @@ const TrueFocus = ({
     }
   };
 
+  const handleClick = (index) => {
+    if (onCategorySelect) {
+      onCategorySelect(words[index]);
+    }
+  };
+
   return (
     <div
       className="relative flex gap-4 justify-center items-center flex-wrap"
@@ -81,6 +88,7 @@ const TrueFocus = ({
             }}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
+            onClick={() => handleClick(index)} // Add click handler
           >
             {word}
           </span>
