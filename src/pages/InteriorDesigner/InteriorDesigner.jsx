@@ -73,7 +73,7 @@ const InteriorDesigner = () => {
         <p className="text-center text-gray-500 mt-8">No profiles available for this category.</p>
        )}
 
-       <div className='p-6 flex flex-col gap-7'>
+       <div className='p-6 flex flex-col  mb-10'>
        <LogoGrid/>
 
        </div>

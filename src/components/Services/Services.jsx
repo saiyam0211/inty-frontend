@@ -38,7 +38,7 @@ const Services = () => {
       <h2 className="text-3xl md:text-4xl font-bold mt-2">
         Find Whatever You Want
       </h2>
-      <div className="grid grid-cols-1 px-10 sm:grid-cols-2 lg:grid-cols-4 lg:px-20 gap-4 mt-8">
+      <div className="grid grid-cols-1 justify-center items-center px-4 sm:grid-cols-2 lg:grid-cols-4 lg:px-10 gap-4 mt-8 " >
         {services.map((service, index) => (
           <div
             key={index}
@@ -48,7 +48,7 @@ const Services = () => {
             <img
               src={service.image}
               alt={service.title}
-              className="w-full h-45 object-cover"
+              className="w-full h-40 object-cover"
             />
             <div className="p-6 flex flex-col flex-grow">
               <h3 className="text-md font-semibold">{service.title}</h3>
