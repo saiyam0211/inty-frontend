@@ -66,7 +66,8 @@ const InteriorDesigner = () => {
       </div>
 
       {/* Carousel & Filtered ProfileCards */}
-      <div className="flex flex-wrap justify-center gap-8">
+
+      <div className=" md:grid md:grid-cols-2">
         {filteredProfiles.length > 0 ? (
           filteredProfiles.map(profile => (
             <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10 w-full ">
@@ -90,6 +91,8 @@ const InteriorDesigner = () => {
         )}
         
       </div>
+      
+     
 
       <div className='p-6 flex flex-col gap-7'>
         <LogoGrid />
