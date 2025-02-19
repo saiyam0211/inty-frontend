@@ -183,7 +183,6 @@ const InteriorDesigner = () => {
 
        <div className='p-6'>
        <LogoGrid/>
-
        </div>
       
 
