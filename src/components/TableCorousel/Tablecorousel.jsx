@@ -23,10 +23,10 @@ const TableCorousel = () => {
     <div className="relative w-full max-w-[600px] mx-auto">
       <div className="relative flex justify-center items-center">
         <button
-          className="absolute left-2 sm:left-4 text-white bg-zinc-600 bg-opacity-50 p-2 rounded-full"
+          className="absolute left-2 sm:left-2 text-white bg-zinc-600 bg-opacity-50 p-2 rounded-full"
           onClick={prevImage}
         >
-          <FaChevronLeft size={20} />
+          <FaChevronLeft size={10} />
         </button>
 
         <img
@@ -36,10 +36,10 @@ const TableCorousel = () => {
         />
 
         <button
-          className="absolute right-2 sm:right-4 text-white bg-zinc-600 bg-opacity-50 p-2 rounded-full"
+          className="absolute right-2 sm:right-2 text-white bg-zinc-600 bg-opacity-50 p-2 rounded-full"
           onClick={nextImage}
         >
-          <FaChevronRight size={20} />
+          <FaChevronRight size={10} />
         </button>
 
         {/* Dots for carousel */}
@@ -48,7 +48,7 @@ const TableCorousel = () => {
             <div
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full cursor-pointer transition-all duration-300 ${
+              className={`w-2 sm:w-3 h-2 sm:h-1 rounded-full cursor-pointer transition-all duration-300 ${
                 currentIndex === index ? 'bg-black' : 'bg-gray-400'
               }`}
             ></div>
