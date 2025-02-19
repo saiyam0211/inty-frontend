@@ -9,8 +9,8 @@ import Footer from "../../components/Footer/Footer";
 import Search from "../../components/Search/Search";
 import axios from 'axios';
 
-// Define the API URL - make sure this matches your backend URL
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://localhost:5000/api/companies'; // Fixed API URL
+const ITEMS_PER_PAGE = 6;
 
 export default function ResidentialSpace() {
   const { isSignedIn } = useUser();
@@ -19,19 +19,20 @@ export default function ResidentialSpace() {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // Fetch companies data
-  const fetchCompanies = async (page = 1) => {
+  const fetchCompanies = async (page = 1, search = '') => {
     try {
       setLoading(true);
-      setError(null); // Clear any previous errors
+      setError(null);
 
-      console.log('Fetching from:', `${API_URL}/companies?page=${page}&limit=9`); // Debug log
+      console.log('Fetching from:', `${API_URL}?page=${page}&limit=${ITEMS_PER_PAGE}&search=${search}`); // Debug log
 
-      const response = await axios.get(`${API_URL}/companies`, {
+      const response = await axios.get(API_URL, {
         params: {
           page,
-          limit: 9
+          limit: ITEMS_PER_PAGE,
+          search
         }
       });
 
@@ -39,31 +40,35 @@ export default function ResidentialSpace() {
 
       if (response.data && Array.isArray(response.data.companies)) {
         setCompanies(response.data.companies);
-        setTotalPages(response.data.totalPages || 1);
-        setCurrentPage(response.data.currentPage || 1);
+        setTotalPages(Math.max(1, response.data.totalPages));
+        setCurrentPage(response.data.currentPage);
       } else {
         throw new Error('Invalid data format received from server');
       }
     } catch (err) {
-      console.error('Detailed error:', err); // Debug log
+      console.error('Error fetching companies:', err);
       setError(
         err.response?.data?.message || 
         err.message || 
         'Failed to fetch companies. Please try again later.'
       );
-      setCompanies([]); // Clear companies on error
+      setCompanies([]);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchCompanies(currentPage);
-  }, [currentPage]);
+    fetchCompanies(currentPage, searchQuery);
+  }, [currentPage, searchQuery]);
 
-  // Pagination component remains the same
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setCurrentPage(1); // Reset to first page when searching
+  };
+
   const Pagination = () => {
-    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+    if (totalPages <= 1) return null;
 
     return (
       <div className="flex justify-center items-center space-x-4 mt-20 mb-8">
@@ -76,7 +81,7 @@ export default function ResidentialSpace() {
         </button>
 
         <div className="flex space-x-2">
-          {pages.map(page => (
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
@@ -104,12 +109,10 @@ export default function ResidentialSpace() {
 
   return (
     <div className="bg-white">
-      {/* Header Section */}
       <div className="absolute top-0 left-0 w-full bg-transparent z-50">
         <Header isResidentialPage={true} />
       </div>
 
-      {/* Hero Section */}
       <section
         className="relative h-[515px] bg-cover bg-center text-white flex items-center justify-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
@@ -120,50 +123,41 @@ export default function ResidentialSpace() {
         </h2>
       </section>
 
-      {/* Search Section */}
       <div className="p-4">
         <div className="bg-white p-4">
-          <Search />
+          <Search onSearch={handleSearch} />
         </div>
 
-        {/* Error Message */}
         {error && (
           <div className="text-red-500 text-center my-4 p-4 bg-red-50 rounded">
             {error}
           </div>
         )}
 
-        {/* Loading State */}
         {loading && (
           <div className="flex justify-center items-center my-12">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#006452]"></div>
           </div>
         )}
 
-        {/* Content Section */}
         {!loading && !error && (
           <>
-            {/* Content based on authentication */}
             {isSignedIn ? (
               <div>
-                {/* Company Cards Section */}
                 <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px]">
                   {companies.map((company) => (
                     <CompanyCard key={company._id} company={company} />
                   ))}
                 </div>
                 
-                {/* Show Pagination only if we have companies */}
-                {companies.length > 0 && <Pagination />}
+                <Pagination />
               </div>
             ) : (
               <div>
-                {/* Login Section */}
                 <div 
                   className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8" 
                   style={{
-                    background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),
-                               `
+                    background: 'linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),'
                   }}
                 >
                   <img className="w-16 h-16" src={lock} alt="Lock" />
@@ -176,22 +170,19 @@ export default function ResidentialSpace() {
                   </Button>
                 </div>
 
-                {/* Blurred Company Cards Section */}
                 <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px]">
                   {companies.slice(0, 6).map((company) => (
                     <CompanyCard key={company._id} company={company} />
                   ))}
                 </div>
-
               </div>
             )}
           </>
         )}
       </div>
 
-      {/* Footer Section */}
       <div className="mt-20">
-         <Footer  />
+        <Footer />
       </div>
     </div>
   );
