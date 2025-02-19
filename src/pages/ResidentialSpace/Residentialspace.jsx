@@ -9,7 +9,7 @@ import Footer from "../../components/Footer/Footer";
 import Search from "../../components/Search/Search";
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/companies'; // Fixed API URL
+const API_URL = 'https://inty-backend.onrender.com/api/companies'; // Fixed API URL
 const ITEMS_PER_PAGE = 6;
 
 export default function ResidentialSpace() {

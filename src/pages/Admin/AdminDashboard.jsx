@@ -16,7 +16,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   // Update API_URL to match your backend structure
-  const API_URL = "http://localhost:5000/api";
+  const API_URL = "https://inty-backend.onrender.com/api";
 
   const deleteCompany = async (companyId) => {
     if (!window.confirm("Are you sure you want to delete this company?")) {
