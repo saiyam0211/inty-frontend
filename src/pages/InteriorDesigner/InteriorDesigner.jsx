@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import review from "../../assets/googlereview.png";
 import backgroundImage from "../../assets/background.png";
+import logo1 from "../../assets/103_logo 1.png";
+import logo2 from "../../assets/logo2.png";
+import logo3 from "../../assets/143_logo 3.png";
+import logo4 from "../../assets/141_logo 4.png";
 import Header from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import TrueFocus from '../../components/FocusLink/Focuslink';
 import Carousel from "../../components/TableCorousel/Tablecorousel";
 import ProfileCard from '../../components/ProfileCard/Profilecard';
-import LogoGrid from '../../components/Logogrid/Logogrid';
+import CardCrousel from '../../components/CardCrousal/CardCrousal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 // Sample Data (Replace this with actual API data)
 const profiles = [
@@ -24,22 +30,29 @@ const profiles = [
   { id: 12, name: "Rajesh Mehta", rate: "₹ 300/hr", location: "Yelahanka", reviewImage: review, experience: "14+", projectsCompleted: "300+" },
 ];
 
-// Categories & Thresholds (Experience in years)
+// Categories & Thresholds (Rate in ₹/hr)
 const categories = {
-  "Basic": { min: 0, max: 7 },
-  "Standard": { min: 7, max: 12 },
-  "Premium": { min: 12, max: 17 },
-  "Luxury": { min: 17, max: Infinity }
+  "Basic": { min: 0, max: 250 },
+  "Standard": { min: 250, max: 300 },
+  "Premium": { min: 300, max: 350 },
+  "Luxury": { min: 350, max: Infinity }
 };
+
+const customImages = [
+  logo1,
+  logo2,
+  logo3,
+  logo4,  
+];
 
 const InteriorDesigner = () => {
   const [selectedCategory, setSelectedCategory] = useState("Basic");
 
   // Filter Profiles based on selected focus category
   const filteredProfiles = profiles.filter(profile => {
-    const experience = parseInt(profile.experience);
+    const rate = parseInt(profile.rate.replace('₹ ', '').replace('/hr', ''));
     const { min, max } = categories[selectedCategory];
-    return experience >= min && experience < max;
+    return rate >= min && rate < max;
   });
 
   return (
@@ -61,24 +74,23 @@ const InteriorDesigner = () => {
       </section>
 
       {/* Focus Links (Pass the setSelectedCategory function) */}
-      <div className="m-8 px-4">
+      <div className="m-12 px-4">
         <TrueFocus sentence="Basic Standard Premium Luxury" onCategorySelect={setSelectedCategory} />
       </div>
 
       {/* Carousel & Filtered ProfileCards */}
-
       <div className=" md:grid md:grid-cols-2">
         {filteredProfiles.length > 0 ? (
           filteredProfiles.map(profile => (
             <div key={profile.id} className="flex flex-col md:flex-row justify-center items-center md:mb-10 w-full ">
-              <div className='w-[350px] max-w-xs sm:max-w-md md:max-w-[550px] md:ml-8 md:transform md:translate-x-1/16 md:translate-y-0 translate-y-5 '>
+              <div className='w-[416px] max-w-xs sm:max-w-md md:max-w-[550px] md:ml-8 md:transform md:translate-x-1/6 md:translate-y-0 translate-y-5 '>
                 <Carousel />
               </div>
               <div className='w-full max-w-[352px] sm:max-w-md md:max-w-[500px] p-4 md:p-0 md:pr-12'>
                 <ProfileCard
                   name={profile.name}
                   rate={profile.rate}
-                  location={profile.location}
+                  location={<><FontAwesomeIcon icon={faLocationDot} /> {profile.location}</>}
                   reviewImage={profile.reviewImage}
                   experience={profile.experience}
                   projectsCompleted={profile.projectsCompleted}
@@ -89,13 +101,11 @@ const InteriorDesigner = () => {
         ) : (
           <p className="text-center text-gray-500 mt-8">No profiles available for this category.</p>
         )}
-        
       </div>
-      
-     
 
-      <div className='p-6 flex flex-col gap-7'>
-        <LogoGrid />
+      {/* Logo Grid Section */}
+      <div>
+        <CardCrousel images={customImages} />
       </div>
 
       {/* Footer Section */}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const TrueFocus = ({
   sentence = "Basic Standard Premium Luxury",
   manualMode = true,
-  blurAmount = 7,
+  blurAmount = 4,
   borderColor = "green",
   glowColor = "rgba(0, 255, 0, 0.6)",
   animationDuration = 0.5,
@@ -73,7 +73,7 @@ const TrueFocus = ({
           <span
             key={index}
             ref={(el) => (wordRefs.current[index] = el)}
-            className="relative text-teal-800 cursor-pointer font-normal md:text-[38px] text-[18px] leading-[45.99px] tracking-[0%]"
+            className="relative text-teal-800 cursor-pointer font-normal md:text-[36px] text-[28px] leading-[45.99px] tracking-[0%]"
             style={{
               filter: manualMode
                 ? isActive
