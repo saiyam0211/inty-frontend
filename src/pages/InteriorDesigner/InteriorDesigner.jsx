@@ -105,7 +105,7 @@ const InteriorDesigner = () => {
 
       {/* Logo Grid Section */}
       <div>
-        <CardCrousel images={customImages} />
+        <CardCrousel images={customImages} showOnlyImages={true} largeImage={true} />
       </div>
 
       {/* Footer Section */}
