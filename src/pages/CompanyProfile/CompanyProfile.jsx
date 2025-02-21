@@ -6,6 +6,7 @@ import RollingGallery from "../../components/CompanyProfile/RollingGallery/Rolli
 import TestimonialCarousel from "../../components/TestimonialCarousel/TestimonialCarousel";
 import Footer from "../../components/Footer/Footer";
 import CardCrousal from "../../components/CardCrousal/CardCrousal";
+import banner from "../../assets/banner.png";
 const CompanyProfile = () => {
   // Sample company data
   const companies = [
@@ -17,6 +18,7 @@ const CompanyProfile = () => {
       experience: 10,
       branches: 20,
     },
+    
     // {
     //   id: 2,
     //   reviews: 23,
@@ -58,6 +60,7 @@ const CompanyProfile = () => {
     //   branches: 20,
     // },
   ];
+  const images = [ banner,banner,banner,banner]
 
   return (
     <div>
@@ -67,7 +70,7 @@ const CompanyProfile = () => {
       <Header />
       <Description />
       <RollingGallery autoplay={true} pauseOnHover={true} />
-      <CardCrousal />
+      <CardCrousal images={images}  />
       <div className="mt-20">
         <TestimonialCarousel />
       </div>

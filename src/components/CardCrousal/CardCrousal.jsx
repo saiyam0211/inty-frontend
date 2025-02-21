@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import banner from "../../assets/banner.png";
+
 import googlereview from "/images/google-icon.png";
 
-const CarouselCard = ({ data, position }) => {
+const CarouselCard = ({ data, position, image }) => {
   const getCardStyles = () => {
     switch (position) {
       case "center":
@@ -27,71 +27,66 @@ const CarouselCard = ({ data, position }) => {
   };
 
   return (
-
-
-
- <div className={`absolute transition-all  duration-700 ease-in-out transform ${getCardStyles()}`}>
-        
-        <div className="bg-white rounded-lg shadow-lg p-4 w-72 mx-3"> 
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex items-center gap-1">
-              <img src={googlereview} alt="Google Icon" className="w-10 " />
-              <p>
-                <span className="text-sm text-gray-600">{data.reviews} Reviews</span>
-                <div className="flex items-center gap-1">
+    <div className={`absolute transition-all duration-700 ease-in-out transform ${getCardStyles()}`}>
+      <div className="bg-white rounded-lg shadow-lg p-4 w-72 mx-3">
+        <div className="flex justify-between items-start mb-4">
+          <div className="flex items-center gap-1">
+            <img src={googlereview} alt="Google Icon" className="w-10" />
+            <p>
+              <span className="text-sm text-gray-600">{data.reviews} Reviews</span>
+              <div className="flex items-center gap-1">
                 {[...Array(getStarRating())].map((_, index) => (
                   <Star key={index} className="w-2 h-2 text-orange-500" fill="currentColor" />
                 ))}
               </div>
-              </p>
-           </div>
-           <a href="./compare">
-           <button className="px-3 py-1 bg-[#006452] text-white rounded-md text-sm">
+            </p>
+          </div>
+          <a href="./compare">
+            <button className="px-3 py-1 bg-[#006452] text-white rounded-md text-sm">
               Compare
             </button>
-           </a> 
+          </a>
+        </div>
+
+        <div className="flex justify-center mb-4">
+          <img src={image} alt="Interior Company Logo" className="h-10" />
+        </div>
+
+        <div className="bg-[#006452] p-4 rounded-lg">
+          <div className="mb-4">
+            <div className="flex justify-between items-center">
+              <span className="text-2xl font-bold text-white">{data.projects}+</span>
+              {data.isTopRated && (
+                <span className="bg-orange-500 text-white px-2 py-1 rounded text-xs">
+                  Top Rated
+                </span>
+              )}
+            </div>
+            <span className="text-sm text-white">Projects Completed</span>
           </div>
-  
-          <div className="flex justify-center mb-4">
-            <img src={banner} alt="Interior Company Logo" className="h-10" />
+
+          <div className="mb-4">
+            <div className="text-2xl font-bold text-white">{data.experience}+</div>
+            <span className="text-sm text-white">Years of Experience</span>
           </div>
-  
-          <div className="bg-[#006452] p-4 rounded-lg">
-            <div className="mb-4">
-              <div className="flex justify-between items-center">
-                <span className="text-2xl font-bold text-white">{data.projects}+</span>
-                {data.isTopRated && (
-                  <span className="bg-orange-500 text-white px-2 py-1 rounded text-xs">
-                    Top Rated
-                  </span>
-                )}
-              </div>
-              <span className="text-sm text-white">Projects Completed</span>
-            </div>
-  
-            <div className="mb-4">
-              <div className="text-2xl font-bold text-white">{data.experience}+</div>
-              <span className="text-sm text-white">Years of Experience</span>
-            </div>
-  
-            <div className="mb-4">
-              <div className="text-2xl font-bold text-white">{data.branches}+</div>
-              <span className="text-sm text-white">Branches</span>
-            </div>
-  
-            <a href="./CompanyProfile">
+
+          <div className="mb-4">
+            <div className="text-2xl font-bold text-white">{data.branches}+</div>
+            <span className="text-sm text-white">Branches</span>
+          </div>
+
+          <a href="./CompanyProfile">
             <button className="w-full bg-white text-[#006452] py-2 rounded-md hover:bg-teal-50 transition-colors">
               Know More
             </button>
-              </a>
-          </div>
+          </a>
         </div>
       </div>
-
+    </div>
   );
 };
 
-const Carousel = () => {
+const Carousel = ({ images }) => {
   const cardsData = [
     { id: 1, reviews: 23, projects: 250, experience: 10, branches: 20, isTopRated: false },
     { id: 2, reviews: 45, projects: 280, experience: 12, branches: 25, isTopRated: true },
@@ -129,8 +124,8 @@ const Carousel = () => {
   };
 
   return (
-    <div className="flex items-center justify-center  min-h-scree">
-      <div className="flex items-center w-[90%]  m-auto gap-8">
+    <div className="flex items-center justify-center md:min-h-screen">
+      <div className="flex items-center w-[90%] m-auto gap-8">
         <button
           onClick={handlePrevious}
           disabled={isAnimating}
@@ -140,9 +135,9 @@ const Carousel = () => {
         </button>
 
         <div className="relative w-full h-[600px] overflow-hidden">
-          <div className="absolute inset-0 flex items-center  w-full justify-center gap-6">
+          <div className="absolute inset-0 flex items-center w-full justify-center gap-6">
             {cardsData.map((card, index) => (
-              <CarouselCard key={card.id} data={card} position={getCardPosition(index)} />
+              <CarouselCard key={card.id} data={card} position={getCardPosition(index)} image={images[index]} />
             ))}
           </div>
         </div>

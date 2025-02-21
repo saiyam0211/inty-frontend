@@ -32,7 +32,7 @@ const TableCorousel = () => {
         <img
           src={images[currentIndex]}
           alt={`Image ${currentIndex + 1}`}
-          className="w-full h-60 sm:h-80 object-cover rounded-md"
+          className="w-full md:h-[313px] sm:h-80 object-cover rounded-md"
         />
 
         <button
