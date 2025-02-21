@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import chair from "../../assets/chair.png";
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';  // Importing arrow icons
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'; // Importing arrow icons
 
-const TableCorousel = () => {
-  const images = [
+const TableCorousel = ({ images = [] }) => {
+  // Default images in case none are provided
+  const defaultImages = [
     chair,
     chair,
     chair,
   ];
 
+  // Use provided images or default ones
+  const carouselImages = images.length > 0 ? images : defaultImages;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
   };
 
   const prevImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselImages.length) % carouselImages.length);
   };
 
   return (
@@ -28,23 +31,21 @@ const TableCorousel = () => {
         >
           <FaChevronLeft size={10} />
         </button>
-
         <img
-          src={images[currentIndex]}
+          src={carouselImages[currentIndex]}
           alt={`Image ${currentIndex + 1}`}
           className="w-full md:h-[313px] sm:h-80 object-cover rounded-md"
         />
-
         <button
           className="absolute right-2 sm:right-2 text-white bg-zinc-600 bg-opacity-50 p-2 rounded-full"
           onClick={nextImage}
         >
           <FaChevronRight size={10} />
         </button>
-
+        
         {/* Dots for carousel */}
         <div className="absolute bottom-2 sm:bottom-4 left-0 right-0 flex justify-center gap-1 sm:gap-2">
-          {images.map((_, index) => (
+          {carouselImages.map((_, index) => (
             <div
               key={index}
               onClick={() => setCurrentIndex(index)}
