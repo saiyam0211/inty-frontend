@@ -9,7 +9,7 @@ import Header from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Search from "../../components/Search/Search";
 
-const API_URL = "https://inty-backend.onrender.com/api/companies"; // Fixed API URL
+const API_URL = "http://localhost:5000/api/companies";
 const ITEMS_PER_PAGE = 6;
 
 export default function ResidentialSpace() {
@@ -149,7 +149,7 @@ export default function ResidentialSpace() {
           <>
             {isSignedIn ? (
               <div>
-                <div className="flex justify-evenly mt-4 flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px]">
+                <div className="flex justify-evenly mt- flex-wrap gap-14 md:gap-16 ml-[20px] mr-[20px] md:ml-[139px] md:mr-[139px]">
                   {companies.map((company) => (
                     <CompanyCard key={company._id} company={company} />
                   ))}
@@ -160,7 +160,7 @@ export default function ResidentialSpace() {
             ) : (
               <div>
                 <div
-                  className="absolute w-full inset-x-0 mt-[1340px] md:mt-[420px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8"
+                  className="absolute w-full inset-x-0 mt-[1340px] md:mt-[500px] mb-0 h-[1340px] md:h-[496px] backdrop-blur-sm flex flex-col items-center justify-center text-white py-8"
                   style={{
                     background: `linear-gradient(180deg, rgba(250, 250, 250, 0.85) 0%, rgba(0, 0, 0, 0.50) 100%),`,
                   }}

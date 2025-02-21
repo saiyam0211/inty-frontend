@@ -49,7 +49,11 @@ const CarouselCard = ({ data, position, image }) => {
         </div>
 
         <div className="flex justify-center mb-4">
-          <img src={image} alt="Interior Company Logo" className="h-10" />
+          <img 
+            src={image || "/images/default-logo.png"} 
+            alt="Interior Company Logo" 
+            className="h-10" 
+          />
         </div>
 
         <div className="bg-[#006452] p-4 rounded-lg">
@@ -86,13 +90,24 @@ const CarouselCard = ({ data, position, image }) => {
   );
 };
 
-const Carousel = ({ images }) => {
+const Carousel = ({ images = [] }) => {
   const cardsData = [
     { id: 1, reviews: 23, projects: 250, experience: 10, branches: 20, isTopRated: false },
     { id: 2, reviews: 45, projects: 280, experience: 12, branches: 25, isTopRated: true },
     { id: 3, reviews: 32, projects: 260, experience: 8, branches: 18, isTopRated: false },
     { id: 4, reviews: 56, projects: 300, experience: 15, branches: 30, isTopRated: false }
   ];
+
+  // Create default placeholder images if none are provided
+  const defaultImages = [
+    "/images/company-logo-1.png",
+    "/images/company-logo-2.png",
+    "/images/company-logo-3.png",
+    "/images/company-logo-4.png"
+  ];
+
+  // Use provided images or fallback to default images
+  const logoImages = images.length >= cardsData.length ? images : defaultImages;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -137,7 +152,12 @@ const Carousel = ({ images }) => {
         <div className="relative w-full h-[600px] overflow-hidden">
           <div className="absolute inset-0 flex items-center w-full justify-center gap-6">
             {cardsData.map((card, index) => (
-              <CarouselCard key={card.id} data={card} position={getCardPosition(index)} image={images[index]} />
+              <CarouselCard 
+                key={card.id} 
+                data={card} 
+                position={getCardPosition(index)} 
+                image={logoImages[index]}
+              />
             ))}
           </div>
         </div>

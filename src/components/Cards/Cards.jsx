@@ -1,11 +1,21 @@
-import banner from "../../assets/banner.png";
 import { useNavigate } from "react-router-dom";
+import defaultBanner from "../../assets/banner.png";
 
 export default function CompanyCard({ company }) {
   const navigate = useNavigate();
 
+  // Determine the banner image source dynamically
+  const getBannerImage = () => {
+    // Try to use banner images in order of priority
+    if (company.bannerImage1) return company.bannerImage1;
+    if (company.logo) return company.logo;
+    
+    // If no image is available, use the default banner as fallback
+    return defaultBanner;
+  };
+
   return (
-    <div className="w-[294px] h-[392px] bg-white shadow-2xl rounded-[8px]">
+    <div className="w-[294px] h-auto  bg-white shadow-2xl rounded-[16px]">
       {/* Review Section - Custom Google Review */}
       <div className="flex justify-between p-4">
         <div className="flex items-center">
@@ -66,13 +76,21 @@ export default function CompanyCard({ company }) {
         </a>
       </div>
 
-      {/* Image Section */}
-      <div className="flex justify-center items-center w-full">
-        <img className="max-w-full h-auto" src={banner} alt="Banner" />
+      {/* Image Section - Now using Cloudinary image */}
+      <div className="flex justify-center items-center w-full h-36 overflow-hidden">
+        <img 
+          className="max-w-full h-auto object-cover" 
+          src={getBannerImage()} 
+          alt={company.name || "Company Banner"} 
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = defaultBanner;
+          }}
+        />
       </div>
 
       {/* Company Details */}
-      <div className="bg-[rgba(0,100,82,0.4)] text-white w-full p-4 rounded-[16px] mt-3 hover:bg-[#006452] transition duration-300 flex flex-col gap-4">
+      <div className="bg-[rgba(0,100,82,0.4)] text-white w-full p-4 rounded-[16px] hover:bg-[#006452] transition duration-300 flex flex-col gap-4">
         <div className="flex justify-between">
           <div className="flex flex-col">
             <p
