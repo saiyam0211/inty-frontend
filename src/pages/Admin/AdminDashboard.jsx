@@ -62,8 +62,9 @@ const AdminDashboard = () => {
   // Assured options
   const assuredOptions = ["Yes", "No"];
 
-  // Set API_URL to localhost:5000
-  const API_URL = "http://localhost:5000/api";
+  // Set API_URL
+  const API_URL = "https://inty-backend-2.onrender.com/api";
+  // const API_URL = "http://localhost:5000/api";
 
   useEffect(() => {
     // Check if user is authenticated

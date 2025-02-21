@@ -9,7 +9,8 @@ import Header from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import Search from "../../components/Search/Search";
 
-const API_URL = "http://localhost:5000/api/companies";
+const API_URL = "https://inty-backend-2.onrender.com/api/companies";
+// const API_URL = "http://localhost:5000/api/companies";
 const ITEMS_PER_PAGE = 6;
 
 export default function ResidentialSpace() {
